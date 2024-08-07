@@ -23,15 +23,15 @@ jobs:
 
       - name: Install dependencies
         run: |
-          cd CashSwitchboard
+          cd Switchboard
           swift package resolve
 
       - name: Build package
         run: |
-          cd CashSwitchboard
+          cd Switchboard
           swift build
 
       - name: Run tests
         run: |
-          cd CashSwitchboard
+          cd Switchboard
           swift test
