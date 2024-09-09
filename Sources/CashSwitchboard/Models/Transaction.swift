@@ -34,15 +34,15 @@ public enum Category: String, Codable {
 }
 
 @Model
-class Transaction: Identifiable, Hashable {
+public class Transaction: Identifiable, Hashable {
     
-    let id = UUID()
-    let category: Category
-    let subcategory: String
-    let amount: Double
-    let date: Date
+    public let id = UUID()
+    public let category: Category
+    public let subcategory: String
+    public let amount: Double
+    public let date: Date
     
-    var iconName: CashIcons {
+    public var iconName: CashIcons {
         switch category {
         case .cash:
             CashIcons.moneyOut
@@ -59,18 +59,18 @@ class Transaction: Identifiable, Hashable {
         }
     }
     
-    var colorAmount: Color {
+    public var colorAmount: Color {
         return category.transactionType == .cashIn ? .green : .red
     }
     
-    init(category: Category, subcategory: String, amount: Double, date: Date) {
+    public init(category: Category, subcategory: String, amount: Double, date: Date) {
         self.category = category
         self.subcategory = subcategory
         self.amount = amount
         self.date = date
     }
     
-    static func == (lhs: Transaction, rhs: Transaction) -> Bool {
+    public static func == (lhs: Transaction, rhs: Transaction) -> Bool {
             return lhs.id == rhs.id &&
                    lhs.category == rhs.category &&
                    lhs.subcategory == rhs.subcategory &&
@@ -78,7 +78,7 @@ class Transaction: Identifiable, Hashable {
                    lhs.date == rhs.date
     }
 
-    func hash(into hasher: inout Hasher) {
+    public func hash(into hasher: inout Hasher) {
         hasher.combine(id)
         hasher.combine(category)
         hasher.combine(subcategory)
