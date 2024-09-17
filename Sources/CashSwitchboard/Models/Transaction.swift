@@ -36,11 +36,11 @@ public enum Category: String, Codable {
 @Model
 public class Transaction: Identifiable, Hashable {
     
-    public let id = UUID()
-    public let category: Category
-    public let subcategory: String
-    public let amount: Double
-    public let date: Date
+    @Attribute(.unique) public let id = UUID()
+    @Attribute public let category: Category
+    @Attribute public let subcategory: String
+    @Attribute public let amount: Double
+    @Attribute public let date: Date
     
     public var iconName: CashIcons {
         switch category {
